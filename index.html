@@ -85,38 +85,39 @@
     .buttons {
       text-align: center;
       margin: 2rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
     }
 
     .buttons a.main-cta {
       display: inline-block;
-      padding: 1rem 2rem;
+      padding: 1.4rem 2.8rem;
       background: #f26eaa;
       color: white;
       text-decoration: none;
       border-radius: 8px;
       font-weight: 600;
+      font-size: 1.4rem;
       animation: pulse 2s ease-in-out infinite;
       transition: transform 0.3s, background 0.3s;
     }
 
-    .buttons a.main-cta:hover {
-      transform: scale(1.1);
-      background: #e05591;
-    }
-
-    .buttons a:not(.main-cta) {
+    .buttons a.secondary-cta {
       display: inline-block;
-      margin: 0.5rem;
-      padding: 1rem 2rem;
+      padding: 1.2rem 1.6rem;
       background: #f26eaa;
       color: white;
       text-decoration: none;
       border-radius: 8px;
-      transition: transform 0.3s, background 0.3s;
       font-weight: 600;
+      font-size: 1.2rem;
+      transition: transform 0.3s, background 0.3s;
     }
 
-    .buttons a:not(.main-cta):hover {
+    .buttons a.secondary-cta:hover,
+    .buttons a.main-cta:hover {
       transform: scale(1.1);
       background: #e05591;
     }
@@ -127,7 +128,6 @@
       100% { transform: scale(1); box-shadow: 0 0 10px #f26eaa50; }
     }
 
-    /* --- Iconos sociales --- */
     .social-icons {
       text-align: center;
       margin: 1rem 0 2rem;
@@ -150,7 +150,7 @@
     .social-icons img:hover {
       transform: scale(1.2);
     }
-    
+
     #popup {
       position: fixed;
       top: 0; left: 0;
@@ -214,7 +214,6 @@
       background-color: #f0f0f0;
     }
 
-    /* --- Lightbox del HTML pequeño --- */
     .lightbox {
       position: fixed;
       top: 0; left: 0;
@@ -265,29 +264,37 @@
       background: rgba(255,255,255,0.3);
     }
 
-    /* Responsive */
-
     @media (max-width: 600px) {
-      h1 {
-        font-size: 1.8rem;
+      .buttons {
+        flex-direction: column;
+        align-items: center;
       }
-      h2 {
-        font-size: 1.5rem;
+
+      .main-cta {
+        order: 0;
+        width: 90%;
+        margin-bottom: 1rem;
       }
-      .carousel-track {
-        height: 350px;
+
+      .button-columns {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        gap: 10px;
       }
-      .carousel-item {
-        min-width: 224px;
-        margin: 0 4.2px;
+
+      .column-left,
+      .column-right {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        gap: 0.5rem;
+        align-items: center;
       }
-      .buttons a.main-cta {
-        padding: 0.75rem 1.2rem;
-        font-size: 0.9rem;
-      }
-      .social-icons img {
-        width: 30px;
-        height: 30px;
+
+      .single-button-center {
+        margin-top: 1rem;
+        text-align: center;
       }
     }
 
@@ -296,49 +303,41 @@
         min-width: 210px;
         margin: 0 7px;
       }
+
       .carousel-track {
         height: 420px;
       }
     }
-
   </style>
 </head>
 <body>
   <h1>🔥All my Social Media & Exclusive Content 🔥</h1>
   <h2>Matt Convard</h2>
-<h3 class="subemail">
-  <a href="mailto:matthewjconvard@gmail.com" style="color: #aaa; text-decoration: none;">
-    matthewjconvard@gmail.com
-  </a>
-</h3>
+  <h3 class="subemail">
+    <a href="mailto:matthewjconvard@gmail.com" style="color: #aaa; text-decoration: none;">
+      matthewjconvard@gmail.com
+    </a>
+  </h3>
+
   <div class="carousel-container">
     <div class="carousel-track" id="carousel1"></div>
   </div>
 
   <div class="buttons">
     <a class="main-cta" href="javascript:void(0)" onclick="showPopup()">My Exclusive Content 💫</a>
-      <a href="https://uv.club/mattconvard">Private Chat With me 🔥</a>
-      <a href="https://enzocustom.com/">Use my code "matthewc44" for your next suit 🤵</a>
-      <a href="https://snapchat.com/t/C55qpww2">Add me on Snapchat 📸</a>
-      <a href="https://www.paypal.com/qrcodes/p2pqrc/GVWHB7UW5G7L4">My Paypal ^_^</a>
-      <a href="https://matthewconvard.modelingfolio.com/">My Model Profile 🤞</a>
-      <a href="https://chuffed.org/project/111884-help-orphaned-youth-around-the-globe">Donate to my ONEtrack Fundraiser ❤️</a>
+    <div class="button-columns" id="button-columns">
+      <div class="column-left" id="column-left"></div>
+      <div class="column-right" id="column-right"></div>
+    </div>
+    <div class="single-button-center" id="odd-button"></div>
   </div>
 
- <div class="social-icons">
-  <a href="https://tiktok.com/@matthewconvard" target="_blank" aria-label="TikTok">
-    <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok" />
-  </a>
-  <a href="https://instagram.com/mattconvard" target="_blank" aria-label="Instagram">
-    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram" />
-  </a>
-  <a href="https://youtube.com/@matthewconvard?si=-4d28WZpgJh0P2-S" target="_blank" aria-label="YouTube">
-    <img src="https://github.com/Irvyandl/Chase/blob/main/assets/youtube.png?raw=true" alt="YouTube" />
-  </a>
-  <a href="https://x.com/mattconvard" target="_blank" aria-label="Twitter/X">
-    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968830.png" alt="Twitter/X" />
-  </a>
-</div>
+  <div class="social-icons">
+    <a href="https://tiktok.com/@matthewconvard" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok" /></a>
+    <a href="https://instagram.com/mattconvard" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram" /></a>
+    <a href="https://youtube.com/@matthewconvard?si=-4d28WZpgJh0P2-S" target="_blank"><img src="https://github.com/Irvyandl/Chase/blob/main/assets/youtube.png?raw=true" alt="YouTube" /></a>
+    <a href="https://x.com/mattconvard" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968830.png" alt="Twitter/X" /></a>
+  </div>
 
   <div class="carousel-container">
     <div class="carousel-track blurred" id="carousel2"></div>
@@ -353,10 +352,10 @@
 
   <div class="lightbox" id="lightbox" style="display:none">
     <div class="lightbox-content" id="lightbox-content"></div>
-    <span class="close" onclick="closeLightbox()" aria-label="Close lightbox">✕</span>
+    <span class="close" onclick="closeLightbox()">✕</span>
   </div>
 
-  <footer id="promo-footer" onclick="window.open('https://irvyandl.github.io/PageDesignWithIrvin/?utm_source=Seb%27s+Web&utm_medium=Telegram', '_blank')" role="link" tabindex="0" onkeypress="if(event.key==='Enter'){this.click();}">
+  <footer id="promo-footer" onclick="window.open('https://irvyandl.github.io/PageDesignWithIrvin/?utm_source=Seb%27s+Web&utm_medium=Telegram', '_blank')">
     Click here to have a website like this!
   </footer>
   <footer>
@@ -367,6 +366,7 @@
     function showPopup() {
       document.getElementById('popup').style.display = 'flex';
     }
+
     window.addEventListener('click', function(e) {
       const popup = document.getElementById('popup');
       const content = document.getElementById('popup-content');
@@ -374,7 +374,39 @@
         popup.style.display = 'none';
       }
     });
-    
+
+    const secondaryLinks = [
+      { href: "https://uv.club/mattconvard", text: "Private Chat With me 🔥" },
+      { href: "https://enzocustom.com/", text: 'Use my code "matthewc44" for your next suit 🤵' },
+      { href: "https://snapchat.com/t/C55qpww2", text: "Add me on Snapchat 📸" },
+      { href: "https://www.paypal.com/qrcodes/p2pqrc/GVWHB7UW5G7L4", text: "My Paypal ^_^" },
+      { href: "https://matthewconvard.modelingfolio.com/", text: "My Model Profile 🤞" },
+      { href: "https://chuffed.org/project/111884-help-orphaned-youth-around-the-globe", text: "Donate to my ONEtrack Fundraiser ❤️" }
+    ];
+
+    const leftCol = document.getElementById("column-left");
+    const rightCol = document.getElementById("column-right");
+    const oddButton = document.getElementById("odd-button");
+    let isMobile = window.innerWidth <= 600;
+
+    secondaryLinks.forEach((link, i) => {
+      const a = document.createElement("a");
+      a.href = link.href;
+      a.className = "secondary-cta";
+      a.textContent = link.text;
+      if (isMobile) {
+        if (secondaryLinks.length % 2 === 1 && i === secondaryLinks.length - 1) {
+          oddButton.appendChild(a);
+        } else if (i % 2 === 0) {
+          leftCol.appendChild(a);
+        } else {
+          rightCol.appendChild(a);
+        }
+      } else {
+        document.querySelector(".buttons").appendChild(a);
+      }
+    });
+
     const videos = [
       'https://github.com/irvinforbusinesses/Matt/raw/refs/heads/main/assets/VID-20250727-WA0006.mp4',
       'https://github.com/irvinforbusinesses/Matt/raw/refs/heads/main/assets/VID-20250727-WA0004.mp4',
@@ -448,12 +480,12 @@
     createCarouselItems(carousel2, shuffledBlurred, true, []);
     duplicateCarouselContent(carousel2);
 
-    function openLightbox(src, isVideo = false, isBlur = false) {
+    function openLightbox(src, isVideo = false, blurred = false) {
       const lightbox = document.getElementById('lightbox');
       const content = document.getElementById('lightbox-content');
-      content.innerHTML = isVideo ?
-        `<video src="${src}" autoplay loop muted controls style="max-width:100%; max-height:100%; border-radius: 10px;"></video>` :
-        `<img src="${src}" style="${isBlur ? 'filter: blur(2.88px);' : ''}">`;
+      content.innerHTML = isVideo
+        ? `<video src="${src}" autoplay loop muted controls style="${blurred ? 'filter: blur(2.88px);' : ''}"></video>`
+        : `<img src="${src}" style="${blurred ? 'filter: blur(2.88px);' : ''}">`;
       lightbox.style.display = 'flex';
     }
 
