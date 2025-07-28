@@ -49,8 +49,10 @@
     .carousel-track {
       display: flex;
       width: max-content;
-      animation: scroll 30s linear infinite;
       height: 300px;
+      visibility: hidden;
+      will-change: transform;
+      /* animation removed, will be added by JS */
     }
 
     .carousel-item {
@@ -79,7 +81,7 @@
 
     @keyframes scroll {
       0% { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
+      100% { transform: translateX(-50%); }
     }
 
     .buttons {
@@ -112,18 +114,17 @@
     }
 
     .main-button .main-cta {
-  padding: 1.8rem 3rem;
-  font-size: 1.4rem;
-  background: #f26eaa;
-  color: white;
-  text-decoration: none;
-  border-radius: 10px;
-  font-weight: 700;
-  animation: pulse 2s ease-in-out infinite;
-  transition: transform 0.3s, background 0.3s;
-  text-align: center;
-}
-
+      padding: 1.8rem 3rem;
+      font-size: 1.4rem;
+      background: #f26eaa;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 700;
+      animation: pulse 2s ease-in-out infinite;
+      transition: transform 0.3s, background 0.3s;
+      text-align: center;
+    }
 
     .main-button .main-cta:hover {
       transform: scale(1.1);
@@ -456,6 +457,14 @@
 
     createCarouselItems(carousel2, shuffledBlurred, true, []);
     duplicateCarouselContent(carousel2);
+
+    function applyAnimation(container) {
+      container.style.animation = 'scroll 30s linear infinite';
+      container.style.visibility = 'visible';
+    }
+
+    applyAnimation(carousel1);
+    applyAnimation(carousel2);
 
     function openLightbox(src, isVideo = false, isBlur = false) {
       const lightbox = document.getElementById('lightbox');
